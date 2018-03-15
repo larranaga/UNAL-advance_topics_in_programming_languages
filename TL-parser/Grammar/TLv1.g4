@@ -6,17 +6,22 @@ LOG:        'log';
 WHILE:      'while';
 FOR:        'for';
 IF:         'if';
-FUNCTION:   'function';
+ELSE:       'else';
+FUNCION:   'funcion';
 IN:         'in';
 RETORNO:    'retorno';
 END:        'end';
 TRUE:       'true';
 FALSE:      'false';
+IMPORTAR:   'importar';
+DESDE:      'desde';
+TODO:       'todo';
+NIL:        'nil';
 
 
 //Lexems
 
-STRINGVALUE         :   '"'(~[\r\n])*'"';
+STRINGVALUE         :   '"' ( '\\' ('\\'|'\t'|'\r\n'|'\r'|'\n'|'"') | ~('\\'|'\t'|'\r'|'\n'|'"') )* '"';
 
 INTEGERVALUE        :   [0-9][0-9]*;
 
@@ -51,8 +56,9 @@ TOKEN_ASSIGN:       '=';
 TOKEN_COMA:         ',';
 TOKEN_DOSP:         ':';
 
-
-
-
 ID      :   [a-zA-Z_][a-zA-Z0-9_]*;
 WS      :   [ \n\t\r]+ -> skip;
+COMMENT : '#' ~[\r\n]* -> skip;
+
+
+ERRORCHARACTER: . ;

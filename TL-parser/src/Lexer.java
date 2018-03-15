@@ -25,12 +25,17 @@ public class Lexer {
         keywords.add("while");
         keywords.add("for");
         keywords.add("if");
-        keywords.add("function");
+        keywords.add("else");
+        keywords.add("funcion");
         keywords.add("in");
         keywords.add("retorno");
         keywords.add("end");
         keywords.add("true");
         keywords.add("false");
+        keywords.add("importar");
+        keywords.add("todo");
+        keywords.add("nil");
+        keywords.add("desde");
     }
 
     private void fillOperators(){
@@ -67,6 +72,7 @@ public class Lexer {
         otherTokens.put("INTEGERVALUE", "token_integer");
         otherTokens.put("STRINGVALUE", "token_string");
         otherTokens.put("FLOATVALUE", "token_float");
+        otherTokens.put("ID", "id");
     }
 
     private String getToken(String str) throws Exception{
@@ -119,10 +125,10 @@ public class Lexer {
                             .append(",")
                             .append((tokenType.equals("token_string") ? lexema.replaceAll("\"", "") : lexema  ));
                 } catch (Exception e){
-                    output.append(">>> Error lexico (")
-                            .append("linea: ")
+                    output.append(">>> Error lexico(" )
+                            .append("linea:")
                             .append(token.getLine())
-                            .append(", posicion: ")
+                            .append(",posicion:")
                             .append(token.getCharPositionInLine() + 1)
                             .append(")\n");
 
@@ -145,12 +151,12 @@ public class Lexer {
     }
 
     public static void main(String[] args) throws Exception {
-        final int[] SAMPLES = {5, 5, 4, 4, 8};
-        final int NUMBER_OF_EXAMPLES = 7;
+        final int[] SAMPLES = {2, 5, 4, 4, 4};
+        final int NUMBER_OF_EXAMPLES = 2;
         final String directory = "lexer-test-cases/";
         final String samples_directory = "samples/";
-        final String inputPrefix = "in0";
-        final String outputPrefix = "out0";
+        final String inputPrefix = "in";
+        final String outputPrefix = "m_out";
         final String extension = ".txt";
 
         Lexer lexerPractice = new Lexer();
@@ -158,21 +164,21 @@ public class Lexer {
         lexerPractice.setFiles("lexer-test-cases/single-input.txt", "lexer-test-cases/output.txt");
         lexerPractice.generateOutput();
 
-        for(int i = 0; i < NUMBER_OF_EXAMPLES; ++i){
+        /*for(int i = 0; i < NUMBER_OF_EXAMPLES; ++i){
             lexerPractice.setFiles(directory + "/" + samples_directory + "/"
                             + inputPrefix + i + extension,
                             directory + "/" + samples_directory + "/" + outputPrefix + i + extension);
             lexerPractice.generateOutput();
-        }
-        /*for(char c = 'A'; c <= 'E'; c++){
-            for(int i = 0 ; i < SAMPLES[(int)(c - 'A')]; i++){
+        }*/
+        for(char c = '0'; c <= '4'; c++){
+            for(int i = 1 ; i <= SAMPLES[(int)(c - '0')]; i++){
                 lexerPractice.setFiles(directory + "/" + String.valueOf(c) + "/"
-                                         + inputPrefix + i + extension,
+                                         + inputPrefix + String.valueOf(c)+ String.valueOf(i) + extension,
                                         directory + "/" + String.valueOf(c) + "/"
-                                         + outputPrefix + i + extension);
+                                         + outputPrefix + String.valueOf(c) +  String.valueOf(i) + extension);
                 lexerPractice.generateOutput();
             }
-        }*/
+        }
     }
 
 }
