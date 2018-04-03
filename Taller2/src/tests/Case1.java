@@ -35,6 +35,11 @@ class Case1 {
 		parser.setFiles(in);
 		String expected = readFile(out);
 		String actual = parser.generateOutput();
+		if(!expected.equals(actual)) {
+			System.out.println(expected);
+			System.out.println("######");
+			System.out.println(actual);
+		}
 		Assert.assertEquals(expected, actual);
 	}
 	

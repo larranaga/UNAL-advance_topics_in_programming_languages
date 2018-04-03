@@ -94,8 +94,8 @@ public class ParserPractice {
                     comma = true;
                 }
 
-                String msg = "<" + token.getLine() + "," + (token.getCharPositionInLine() + 1) + "> Error sintactico "
-                        + "se encontro: " + elementName(tokenName) + "; se esperaba: "
+                String msg = "<" + token.getLine() + ":" + (token.getCharPositionInLine() + 1) + "> Error sintactico."
+                        + " Encontrado: " + elementName(tokenName) + "; se esperaba: "
                         + expectedBuffer + ".";
 
                 if(!syntaxErrorFound){
