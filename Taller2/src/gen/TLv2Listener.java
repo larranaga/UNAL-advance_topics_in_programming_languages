@@ -78,6 +78,16 @@ public interface TLv2Listener extends ParseTreeListener {
 	 */
 	void exitInstruccion(TLv2Parser.InstruccionContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link TLv2Parser#bloque}.
+	 * @param ctx the parse tree
+	 */
+	void enterBloque(TLv2Parser.BloqueContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link TLv2Parser#bloque}.
+	 * @param ctx the parse tree
+	 */
+	void exitBloque(TLv2Parser.BloqueContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link TLv2Parser#ifBlock}.
 	 * @param ctx the parse tree
 	 */
@@ -187,4 +197,14 @@ public interface TLv2Listener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitExpresion(TLv2Parser.ExpresionContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link TLv2Parser#objeto}.
+	 * @param ctx the parse tree
+	 */
+	void enterObjeto(TLv2Parser.ObjetoContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link TLv2Parser#objeto}.
+	 * @param ctx the parse tree
+	 */
+	void exitObjeto(TLv2Parser.ObjetoContext ctx);
 }

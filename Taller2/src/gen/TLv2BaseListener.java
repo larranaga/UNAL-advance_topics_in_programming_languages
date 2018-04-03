@@ -100,6 +100,18 @@ public class TLv2BaseListener implements TLv2Listener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterBloque(TLv2Parser.BloqueContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitBloque(TLv2Parser.BloqueContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterIfBlock(TLv2Parser.IfBlockContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -227,6 +239,18 @@ public class TLv2BaseListener implements TLv2Listener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitExpresion(TLv2Parser.ExpresionContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterObjeto(TLv2Parser.ObjetoContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitObjeto(TLv2Parser.ObjetoContext ctx) { }
 
 	/**
 	 * {@inheritDoc}

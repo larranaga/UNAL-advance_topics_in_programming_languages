@@ -33,16 +33,18 @@ instruccion             :   ifBlock
                         |   forBlock
                         |   asignacion
                         ;
+                        
+bloque					: 	instruccion | '{' instruccion* '}' ;
 
-ifBlock                      :   IF '(' expresion ')' instruccion * elseifBlock* elseBlock ? ;
+ifBlock                      :   IF '(' expresion ')' bloque elseifBlock* elseBlock ? ;
 
-elseifBlock                  :   ELSE IF '(' expresion ')' instruccion* ;
+elseifBlock                  :   ELSE IF '(' expresion ')' bloque ;
 
-elseBlock                    :   ELSE instruccion* ;
+elseBlock                    :   ELSE bloque ;
 
-whileBlock                   :   WHILE '(' expresion ')' instruccion* ;
+whileBlock                   :   WHILE '(' expresion ')' bloque ;
 
-forBlock                     :   FOR ID IN (arreglo | ID) '{' instruccion* '}' ;
+forBlock                     :   FOR ID IN (arreglo | ID) bloque ;
 
 importar                :   IMPORTAR ID ( '.' ID)*
                         |   DESDE ID IMPORTAR ID
@@ -55,11 +57,14 @@ leer                    :   LEER '(' variable ')';
 asignacion              :   variable '=' expresion;
 
 
-arreglo                 :   '[' INTEGERVALUE ? ( ',' INTEGERVALUE) * ']' EOF ;
+arreglo                 :   '[' ( INTEGERVALUE | STRINGVALUE ) ? ( ',' ( INTEGERVALUE | STRINGVALUE )) * ']' ;
 
 
 expresion               :   value=(INTEGERVALUE | FLOATVALUE | STRINGVALUE | TRUE | FALSE)
                         |   variable
+                        | 	ID ('.' ID)+
+                        | 	objeto
+                        |   ID '(' expresion ')'
                         |   '(' expresion ')'
                         |   op=('-' | '!') expresion
                         |   expresion '^' expresion
@@ -70,6 +75,8 @@ expresion               :   value=(INTEGERVALUE | FLOATVALUE | STRINGVALUE | TRU
                         |   expresion '&&' expresion
                         |   expresion '||' expresion
                         ;
+
+objeto					: '{' ( ID ':' expresion ) ? ( ',' ID ':' expresion  )*   '}' ;
 
 //Reserved words
 LOG:        'log';
