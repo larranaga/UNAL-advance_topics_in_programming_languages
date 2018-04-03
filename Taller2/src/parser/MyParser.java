@@ -11,9 +11,9 @@ import org.antlr.v4.runtime.tree.ParseTree;
 import gen.TLv2Lexer;
 import gen.TLv2Parser;
 
-public class Parser {
+public class MyParser {
 	
-	private static String test = "test_cases/4/in04.txt";
+	private static String test = "test_cases/5/in04.txt";
 	
 	public static void main(String[] args) {
 		try {
