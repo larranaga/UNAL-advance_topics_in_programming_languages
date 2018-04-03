@@ -22,13 +22,13 @@ public class ParserPractice {
     }
 
 
-    public void generateOutput() throws Exception {
+    public String generateOutput() throws Exception {
         ANTLRInputStream input = new ANTLRInputStream(new FileInputStream(inputFilename));
         TLv2Lexer lexer = new TLv2Lexer(input);
         CommonTokenStream tokens = new CommonTokenStream(lexer);
         TLv2Parser parser = new TLv2Parser(tokens);
 
-        final PrintWriter writer = new PrintWriter(System.out);//new PrintWriter(outputFilename, "UTF-8");
+        final StringBuilder writer = new StringBuilder();
 
         parser.setErrorHandler(new DefaultErrorStrategy(){
 
@@ -100,8 +100,7 @@ public class ParserPractice {
 
                 if(!syntaxErrorFound){
                     syntaxErrorFound = true;
-                    writer.print(msg);
-                    writer.close();
+                    writer.append(msg);
                 }
                 return msg;
             }
@@ -142,8 +141,9 @@ public class ParserPractice {
         parser.tl();
 
         if(!syntaxErrorFound){
-            writer.print("El analisis sintactico ha finalizado correctamente.");
-            writer.close();
+            writer.append("El analisis sintactico ha finalizado correctamente.");
         }
+        
+        return writer.toString();
     }
 }
