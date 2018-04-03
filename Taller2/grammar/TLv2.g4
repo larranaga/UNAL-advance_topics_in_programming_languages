@@ -14,7 +14,7 @@ valor                   :   variable
                         |   FALSE
                         ;
 
-variable                :   ID ('[' valor ']') ? ;
+variable                :   ID ('[' expresion (',' expresion)* ']') ? ;
 
 
 //main grammar
@@ -33,6 +33,7 @@ instruccion             :   ifBlock
                         |   forBlock
                         |   asignacion
                         | 	llamado
+                        |   expresion
                         ;
                         
 bloque					: 	instruccion | '{' instruccion* '}' ;
