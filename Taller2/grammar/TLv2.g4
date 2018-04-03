@@ -32,6 +32,7 @@ instruccion             :   ifBlock
                         |   leer
                         |   forBlock
                         |   asignacion
+                        | 	llamado
                         ;
                         
 bloque					: 	instruccion | '{' instruccion* '}' ;
@@ -45,6 +46,8 @@ elseBlock                    :   ELSE bloque ;
 whileBlock                   :   WHILE '(' expresion ')' bloque ;
 
 forBlock                     :   FOR ID IN (arreglo | ID) bloque ;
+
+llamado						 :   ID '(' expresion ? (',' expresion)* ')' ;
 
 importar                :   IMPORTAR ID ( '.' ID)*
                         |   DESDE ID IMPORTAR ID
@@ -64,8 +67,7 @@ expresion               :   value=(INTEGERVALUE | FLOATVALUE | STRINGVALUE | TRU
                         |   variable
                         | 	ID ('.' ID)+
                         | 	objeto
-                        |   ID '(' expresion ')'
-                        |   '(' expresion ')'
+                        |   llamado
                         |   op=('-' | '!') expresion
                         |   expresion '^' expresion
                         |   expresion op=('/' | '*' | '%') expresion
@@ -74,6 +76,7 @@ expresion               :   value=(INTEGERVALUE | FLOATVALUE | STRINGVALUE | TRU
                         |   expresion op=('==' | '!=') expresion
                         |   expresion '&&' expresion
                         |   expresion '||' expresion
+                        |   '(' expresion ')'
                         ;
 
 objeto					: '{' ( ID ':' expresion ) ? ( ',' ID ':' expresion  )*   '}' ;

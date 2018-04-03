@@ -13,7 +13,7 @@ import gen.TLv2Parser;
 
 public class Parser {
 	
-	private static String test = "test_cases/2/in03.txt";
+	private static String test = "test_cases/1/in04.txt";
 	
 	public static void main(String[] args) {
 		try {

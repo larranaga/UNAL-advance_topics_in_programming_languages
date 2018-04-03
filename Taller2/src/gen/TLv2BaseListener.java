@@ -172,6 +172,18 @@ public class TLv2BaseListener implements TLv2Listener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterLlamado(TLv2Parser.LlamadoContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitLlamado(TLv2Parser.LlamadoContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterImportar(TLv2Parser.ImportarContext ctx) { }
 	/**
 	 * {@inheritDoc}

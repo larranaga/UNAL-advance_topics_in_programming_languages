@@ -138,6 +138,16 @@ public interface TLv2Listener extends ParseTreeListener {
 	 */
 	void exitForBlock(TLv2Parser.ForBlockContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link TLv2Parser#llamado}.
+	 * @param ctx the parse tree
+	 */
+	void enterLlamado(TLv2Parser.LlamadoContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link TLv2Parser#llamado}.
+	 * @param ctx the parse tree
+	 */
+	void exitLlamado(TLv2Parser.LlamadoContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link TLv2Parser#importar}.
 	 * @param ctx the parse tree
 	 */
